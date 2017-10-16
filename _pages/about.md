@@ -13,7 +13,7 @@ this are software, graphic design, and music.
 
 ## Background
 
-Currently I study computer science at Boston University.
+Currently, I study computer science at Boston University.
 
 I am obsessed with [Rust]. It makes writing fast and reliable code very easy.
 
