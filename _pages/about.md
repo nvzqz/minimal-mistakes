@@ -2,6 +2,26 @@
 title: "About Me"
 sitemap: false
 permalink: /about/
+author_profile: false
 ---
 
-This is where I'll eventually get around to talking about myself...
+My name is Nikolai Vazquez and I enjoy creating. The channels through which I do
+this are software, graphic design, and music.
+
+> "If something makes you happy, pursue it regardless of how lousy you may be."
+> --- Me
+
+## Background
+
+Currently I study computer science at Boston University.
+
+I am obsessed with [Rust]. It makes writing fast and reliable code very easy.
+
+My introduction to software development was through the open source community.
+As a result, I prioritize making my code open and freely distributable on
+[GitHub][gh].
+
+I speak English, hablo español und ich spreche Deutsch.
+
+[gh]: https://github.com/nvzqz
+[Rust]: https://www.rust-lang.org
