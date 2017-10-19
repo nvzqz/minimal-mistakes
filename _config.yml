@@ -113,6 +113,8 @@ author:
   xing             :
   youtube          : # "https://youtube.com/c/MichaelRoseDesign"
 
+twitter:
+  username         : &twitter "nikolaivazquez"
 
 # Reading Files
 include:
