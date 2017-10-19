@@ -8,8 +8,8 @@ header:
     caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 ---
 
-My name is Nikolai Vazquez and I enjoy creating. The channels through which I do
-this are software, graphic design, and music.
+My name is Nikolai Vazquez and I enjoy creating. I channel my creativity through
+software development, graphic design, and music performance.
 
 > "If something makes you happy, pursue it regardless of how lousy you may be."
 > --- Me
