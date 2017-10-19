@@ -251,6 +251,7 @@ defaults:
       comments: # true
       share: true
       related: true
+      category: posts
   # _pages
   - scope:
       path: ""
