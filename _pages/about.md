@@ -25,7 +25,23 @@ My introduction to software development was through the open source community.
 As a result, I prioritize making my code open and freely distributable on
 [GitHub][gh].
 
-I speak English, hablo español und ich spreche ein bisschen Deutsch.
+## Skills
+
+### Programming:
+Proficient: Swift, Java, Rust<br>
+Familiar: C, Python, Ruby, JavaScript, MATLAB
+
+### Dev Tools:
+Git, Bash/Zsh, Xcode, Cocoapods, Carthage, Vagrant, Node.js
+
+### Documents:
+LaTeX, InDesign
+
+### Design:
+Sketch, Photoshop, Illustrator, After Effects, Cinema 4D
+
+### Languages:
+English (native), Spanish (intermediate), German (basic)
 
 [gh]: https://github.com/nvzqz
 [Rust]: https://www.rust-lang.org
