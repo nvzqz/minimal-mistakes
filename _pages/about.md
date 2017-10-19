@@ -11,8 +11,10 @@ header:
 My name is Nikolai Vazquez and I enjoy creating. I channel my creativity through
 software development, graphic design, and music performance.
 
-> "If something makes you happy, pursue it regardless of how lousy you may be."
-> --- Me
+> "Anything that thinks logically can be fooled by something else that thinks at
+> least as logically."
+>
+> -- Douglas Adams
 
 ## Background
 
