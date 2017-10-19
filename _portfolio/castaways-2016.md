@@ -1,5 +1,5 @@
 ---
-title: "Castaways Against Cancer -- 2016"
+title: "Castaways Against Cancer"
 excerpt: "Logo design for the Castaways Against Cancer 2016 Proof of Life tour."
 header:
   image: /assets/images/portfolio/castaways-2016-header.jpg
