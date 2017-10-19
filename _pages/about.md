@@ -16,7 +16,8 @@ software development, graphic design, and music performance.
 
 ## Background
 
-Currently, I study computer science at Boston University.
+I live in Miami, FL however I spend most of my year studying computer science at
+Boston University.
 
 I am obsessed with [Rust]. It makes writing fast and reliable code very easy.
 
