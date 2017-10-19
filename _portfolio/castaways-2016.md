@@ -13,6 +13,11 @@ sidebar:
 
 Designed the 2016 Proof of Life logo for the [Castaways Against Cancer][site].
 
+## Design Choices
+- Heart: Love for those battling cancer
+- Paddles: A Castaway's tools to get to their destination
+- Seagull: Inspires hope by being a symbol of life and land nearby
+
 ## The Castaways
 
 The Castaways are a rag-tag crew of kayaking enthusiasts who paddle from Miami
