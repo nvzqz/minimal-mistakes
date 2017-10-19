@@ -10,6 +10,13 @@ header:
 
 A graphics reel of projects I've worked on for [CCNN Live] in 2016.
 
+Everything presented was done with a combination of:
+- After Effects
+- Premiere Pro
+- Illustrator
+- Photoshop
+- Sketch
+
 Received an honorable mention from the Suncoast Chapter of the National Academy
 of Television Arts and Sciences.
 
