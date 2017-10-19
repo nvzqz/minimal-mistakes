@@ -24,7 +24,7 @@ My introduction to software development was through the open source community.
 As a result, I prioritize making my code open and freely distributable on
 [GitHub][gh].
 
-I speak English, hablo español und ich spreche Deutsch.
+I speak English, hablo español und ich spreche ein bisschen Deutsch.
 
 [gh]: https://github.com/nvzqz
 [Rust]: https://www.rust-lang.org
