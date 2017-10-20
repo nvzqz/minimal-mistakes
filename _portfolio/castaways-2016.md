@@ -9,9 +9,21 @@ sidebar:
     text: "Logo Designer"
   - title: "Responsibilities"
     text: "To capture and represent the spirit of the Castaways as they kayak for seven days from Miami to Key West."
+gallery:
+  - url: /assets/images/portfolio/castaways-2016-01a.jpg
+    image_path: /assets/images/portfolio/castaways-2016-01b.jpg
+    alt: "Logo on shirt"
+  - url: /assets/images/portfolio/castaways-2016-02a.jpg
+    image_path: /assets/images/portfolio/castaways-2016-02b.jpg
+    alt: "Logo on kayak"
+  - url: /assets/images/portfolio/castaways-2016-03a.jpg
+    image_path: /assets/images/portfolio/castaways-2016-03b.jpg
+    alt: "Logo alt"
 ---
 
 Designed the 2016 Proof of Life logo for the [Castaways Against Cancer][site].
+
+{% include gallery %}
 
 ## Design Choices
 - **Heart:** Love for those battling cancer.
