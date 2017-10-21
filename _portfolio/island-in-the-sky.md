@@ -4,6 +4,7 @@ excerpt: "The result of my first day with Cinema 4D."
 header:
   image: /assets/images/portfolio/island-in-the-sky-header.jpg
   teaser: assets/images/portfolio/island-in-the-sky-teaser.jpg
+last_modified_at: 2017-10-19
 ---
 
 I was on a time crunch to become familiar with Cinema 4D so I followed a simple

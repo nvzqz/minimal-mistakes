@@ -19,6 +19,7 @@ gallery:
   - url: /assets/images/portfolio/castaways-2016-03a.jpg
     image_path: /assets/images/portfolio/castaways-2016-03b.jpg
     alt: "Logo alt"
+last_modified_at: 2017-10-19
 ---
 
 Designed the 2016 Proof of Life logo for the [Castaways Against Cancer][site].

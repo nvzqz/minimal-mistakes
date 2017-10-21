@@ -6,6 +6,7 @@ header:
     id: vXa9CEgI2C8
     provider: youtube
   teaser: assets/images/portfolio/graphics-reel-2016-teaser.png
+last_modified_at: 2017-10-19
 ---
 
 A graphics reel of projects I've worked on for [CCNN Live] in 2016.
