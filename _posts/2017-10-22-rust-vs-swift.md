@@ -36,3 +36,15 @@ Both languages ensure that primitive sizes and signedness are explicitly known.
 
 [i128]: https://github.com/rust-lang/rust/issues/35118
 [x86 extended precision]: https://en.wikipedia.org/wiki/Extended_precision#x86_extended_precision_format
+
+## References
+
+## Strings
+
+## Sum Types
+
+## Pattern Matching
+
+## Constants and Statics
+
+## Error Handling
