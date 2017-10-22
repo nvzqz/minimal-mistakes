@@ -27,7 +27,7 @@ figure.highlight {
     speak: none;
   }
 
-  .highlight {
+  pre.highlight {
     margin: 0;
     padding: 1em;
   }
@@ -58,7 +58,9 @@ figure.highlight {
   }
 }
 
-.highlight pre { width: 100%; }
+.highlight pre {
+  width: 100%;
+}
 
 /*
    Solarized Light
