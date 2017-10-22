@@ -12,6 +12,9 @@ author_profile: false
 A thorough comparison between Rust and Swift: two very similar languages aimed
 towards system and applications programming.
 
+**Notice:** This post is still in the process of being written
+{: .notice--info}
+
 ## Primitives
 
 Both languages ensure that primitive sizes and signedness are explicitly known.
