@@ -601,6 +601,10 @@ assert_eq_size! { some_sizes;
 Evidently we can utilize Rust's powerful compile-time checks in a very elegant
 way.
 
+This post was inspired from speaking to other Rustaceans at the Boston Rust
+meetup last night. Apparently there's members of the community who are just as
+interested in these cool little hacks as I am. 😁
+
 Currently, `assert_eq_size!` can't be implemented via `const_assert` because
 `std::mem::size_of` is not a constant function (yet).
 
