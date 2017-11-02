@@ -25,6 +25,9 @@ Rust 1.21.0 can be installed and enabled via:
 rustup install 1.21.0 && rustup default 1.21.0
 ```
 
+If you'd rather not install Rust, you can follow along just as easily with
+[a Rust playground][play].
+
 ## Asserting Constant Conditions
 
 The final result can be used [here](https://play.rust-lang.org/?gist=a981e147c536884c974014311fdd0d39).
@@ -612,6 +615,7 @@ any suggestions feel free to open an issue or pull request.
 
 [static_assertions]: https://crates.io/crates/static_assertions
 [Rust]: https://www.rust-lang.org
+[play]: https://play.rust-lang.org/
 [turbofish]: https://github.com/steveklabnik/rust/commit/4f22b4d1dbaa14da92be77434d9c94035f24ca5d#commitcomment-14014176
 
 [transmute]:       https://doc.rust-lang.org/std/mem/fn.transmute.html
