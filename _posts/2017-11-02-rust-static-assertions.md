@@ -609,7 +609,7 @@ This post was inspired from speaking to other Rustaceans at the Boston Rust
 meetup last night. Apparently there's members of the community who are just as
 interested in these cool little hacks as I am. 😁
 
-Currently, `assert_eq_size!` can't be implemented via `const_assert` because
+Currently, `assert_eq_size!` can't be implemented via `const_assert!` because
 `std::mem::size_of` is not a constant function (yet).
 
 Check out [static_assertions] for more functionality just like this! If you have
