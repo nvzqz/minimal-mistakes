@@ -11,8 +11,9 @@ author_profile: false
 Four months ago I published the [static_assertions] crate. To understand how it
 works, we need to learn how to creatively use compile errors.
 
-Here I'll be explaining how one would go about defining a macro to
-[assert constant conditions](#asserting-constant-conditions).
+Here I'll be explaining how one would go about defining macros to
+[assert constant conditions](#asserting-constant-conditions) and
+[assert equal sized types](#asserting-equal-sized-types) **at compile-time**.
 
 ## Setup
 
@@ -288,7 +289,7 @@ macro_rules! const_assert {
 }
 ```
 
-We've now defined a macro with two sets of input options. The second set will
+We have now defined a macro with two sets of input options. The second set will
 create a function with the given label as its name. It'll then recursively call
 `const_assert!` with the provided expression.
 
@@ -355,7 +356,7 @@ We can update our `let` binding accordingly:
 let _ = [(); 0 - !$condition as usize];
 ```
 
-Here, our array element type is the unit type: a zero sized type. The array's
+Here our array element type is the unit type: a zero sized type. The array's
 size is exactly the same as our previous value.
 
 We can now remove the `#[deny(const_err)]` annotation since array sizes are
@@ -415,5 +416,202 @@ const_assert! { simple_math;
 }
 ```
 
+## Asserting Equal Sized Types
+
+### Reasoning
+
+Rust is a language that's suitable for working on systems at a low level. This
+may involve pointer casts between different types.
+
+If we change our types' internal structures, their sizes may also change. This
+will lead to strange behavior if we're accidentally casting between
+differently-sized types.
+
+What if we want to ensure `usize` has the same size as `u64` within somewhere
+deep within our code? Maybe we can use something in conjunction with
+`#[cfg(target_pointer_width = "64")]`.
+
+One way of performing type casts is via [`std::mem::transmute`][transmute]. It
+takes the bits of a value of a given type and returns the same bits but with a
+different type.
+
+When the output type is not the same size as the input, we get a compile error:
+
+```rust
+use std::mem::transmute;
+
+fn main() {
+    let a: u32 = 42;
+    let b: u16 = unsafe { transmute(a) };
+}
+```
+
+```
+error[E0512]: transmute called with types of different sizes
+ --> src/main.rs:5:27
+  |
+5 |     let b: u16 = unsafe { transmute(a) };
+  |                           ^^^^^^^^^
+  |
+  = note: source type: u32 (32 bits)
+  = note: target type: u16 (16 bits)
+
+error: aborting due to previous error
+```
+
+Can we use this to our advantage in a general and ergonomic way? Of course!
+
+To go about this we'll need to import the following from `std::mem`:
+
+- [`transmute`][transmute] --- What will enable our compile errors
+
+- [`uninitialized`] --- For instantiating our types
+
+- [`forget`] --- To discard our instances without dropping them
+
+### The Macro
+
+With these tools we can write our basic macro:
+
+```rust
+use std::mem::{forget, transmute, uninitialized};
+
+macro_rules! assert_eq_size {
+    ($x:ty, $y:ty) => {
+        unsafe {
+            forget(transmute::<$x, $y>(uninitialized()));
+        }
+    }
+}
+```
+
+Here `$x` and `$y` are annotated with `:ty`, which means that we can accept
+**any** type. Yes, Rust's macros are this powerful.
+
+You may have noticed the odd `::<>` after `transmute`. This is  unofficially
+referred to as [turbofish] syntax. It tells the compiler what generic parameters
+to use for `transmute`, which takes an input and output type.
+
+Because of type inference, Rust knows that `uninitialized` creates a value of
+type `$x`.
+
+Let's try this out:
+
+```rust
+assert_eq_size!(u16, u32);
+```
+
+```
+error[E0512]: transmute called with types of different sizes
+  --> src/main.rs:6:20
+   |
+6  |             forget(transmute::<$x, $y>(uninitialized()));
+   |                    ^^^^^^^^^^^^^^^^^^^
+...
+12 |     assert_eq_size!(u32, u16);
+   |     -------------------------- in this macro invocation
+   |
+   = note: source type: u32 (32 bits)
+   = note: target type: u16 (16 bits)
+
+error: aborting due to previous error
+```
+
+Excellent, it works!
+
+### Improving Usability
+
+Similar to with how we initially defined `const_assert!`, we can only use this
+macro within the context of a function. We can apply the same labeling technique
+here!
+
+```rust
+macro_rules! assert_eq_size {
+    ($x:ty, $y:ty) => {
+        unsafe {
+            forget(transmute::<$x, $y>(uninitialized()));
+        }
+    }; // <-- Notice the semicolon!
+    ($label:ident; $x:ty, $y:ty) => {
+        #[allow(non_snake_case)] // Allows any naming convention
+        #[allow(dead_code)]      // Can be left unused
+        fn $label() {
+            assert_eq_size!($x, $y);
+        }
+    };
+}
+```
+
+This new definition can take a "label" and create a function that then
+recursively calls `assert_eq_size!` with the given types.
+
+We can now use our macro in both global and function contexts:
+
+```rust
+assert_eq_size!(string_size; &str, (usize, usize));
+
+fn main() {
+    assert_eq_size!([u8; 4], u32);
+}
+```
+
+### Better Usability (Advanced)
+
+We're not done yet; we can make our macro even more awesome!
+
+What if we want to check more than two types against one another? Yeah, that's
+very much possible.
+
+```rust
+macro_rules! assert_eq_size {
+    ($x:ty, $($xs:ty),+ $(,)*) => {
+        unsafe {
+            $(forget(transmute::<$x, $xs>(uninitialized()));)+
+        }
+    };
+    ($label:ident; $($rest:tt)+) => {
+        #[allow(dead_code, non_snake_case)]
+        fn $label() {
+            assert_eq_size!($($rest)+);
+        }
+    };
+}
+```
+
+Here the first branch takes some first type `$x` followed by one or more
+comma-separated types denoted by `$xs`. It can also have zero or more trailing
+commas. The second branch takes all tokens passed after `$label` and forwards
+them to the first branch.
+
+Notice that we're repeating our statement over each type matched by `$xs` but we
+maintain the same initial `$x` type.
+
+Our final macro can now be used as such:
+
+```rust
+assert_eq_size! { some_sizes;
+    [u8; 4],
+    (u16, u16),
+    u32,
+}
+```
+
+## Final Comments
+
+Evidently we can utilize Rust's powerful compile-time checks in a very elegant
+way.
+
+Currently, `assert_eq_size!` can't be implemented via `const_assert` because
+`std::mem::size_of` is not a constant function (yet).
+
+Check out [static_assertions] for more functionality just like this! If you have
+any suggestions feel free to open an issue or pull request.
+
 [static_assertions]: https://crates.io/crates/static_assertions
 [Rust]: rust-lang.org
+[turbofish]: https://github.com/steveklabnik/rust/commit/4f22b4d1dbaa14da92be77434d9c94035f24ca5d#commitcomment-14014176
+
+[transmute]:       https://doc.rust-lang.org/std/mem/fn.transmute.html
+[`uninitialized`]: https://doc.rust-lang.org/std/mem/fn.uninitialized.html
+[`forget`]:        https://doc.rust-lang.org/std/mem/fn.forget.html
+
