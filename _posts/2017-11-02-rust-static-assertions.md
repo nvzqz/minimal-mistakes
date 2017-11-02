@@ -27,6 +27,8 @@ rustup install 1.21.0 && rustup default 1.21.0
 
 ## Asserting Constant Conditions
 
+The final result can be used [here](https://play.rust-lang.org/?gist=a981e147c536884c974014311fdd0d39).
+
 ### Reasoning
 
 The main reason I wrote [static_assertions] was to have something similar to
