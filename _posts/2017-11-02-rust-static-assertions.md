@@ -420,6 +420,8 @@ const_assert! { simple_math;
 
 ## Asserting Equal Sized Types
 
+The final result can be used [here](https://play.rust-lang.org/?gist=f3de36b61b277ab789314710c1f0b150).
+
 ### Reasoning
 
 Rust is a language that's suitable for working on systems at a low level. This
