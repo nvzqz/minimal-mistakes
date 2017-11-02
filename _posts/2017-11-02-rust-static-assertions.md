@@ -608,7 +608,7 @@ Check out [static_assertions] for more functionality just like this! If you have
 any suggestions feel free to open an issue or pull request.
 
 [static_assertions]: https://crates.io/crates/static_assertions
-[Rust]: rust-lang.org
+[Rust]: https://www.rust-lang.org
 [turbofish]: https://github.com/steveklabnik/rust/commit/4f22b4d1dbaa14da92be77434d9c94035f24ca5d#commitcomment-14014176
 
 [transmute]:       https://doc.rust-lang.org/std/mem/fn.transmute.html
