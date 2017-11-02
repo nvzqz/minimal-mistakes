@@ -5,7 +5,6 @@ permalink: /about/
 author_profile: false
 header:
     overlay_image: /assets/images/stock/boston-skyline01.jpg
-    caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 ---
 
 My name is Nikolai Vazquez and I enjoy creating. I channel my creativity through
