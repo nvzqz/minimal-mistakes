@@ -8,8 +8,7 @@ toc: true
 author_profile: false
 ---
 
-Four months ago I published the [static_assertions] crate. To understand how it
-works, we need to learn how to creatively use compile errors.
+Four months ago I published the [static_assertions] crate. To understand how it works, we need to learn how to creatively use compile errors.
 
 Here I'll be explaining how one would go about defining macros to
 [assert constant conditions](#asserting-constant-conditions) and
