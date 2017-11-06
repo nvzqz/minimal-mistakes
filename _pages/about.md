@@ -21,7 +21,8 @@ I live in Miami, FL however I spend most of my year studying computer science at
 Boston University.
 
 I currently have a fascination with [Rust]. It makes writing fast and reliable
-code very easy. [My contributions.](https://github.com/rust-lang/rust/commits?author=nvzqz)
+code very easy. I've made [some contributions](https://github.com/rust-lang/rust/commits?author=nvzqz)
+to the language.
 
 My introduction to software development was through the open source community.
 As a result, I prioritize making my code open and freely distributable on
