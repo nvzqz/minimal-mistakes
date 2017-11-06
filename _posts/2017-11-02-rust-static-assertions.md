@@ -6,6 +6,8 @@ tags:
     - rust
 toc: true
 author_profile: false
+header:
+    image: /assets/images/posts/rust-static-assertions.png
 ---
 
 Four months ago I published the [static_assertions] crate. To understand how it works, we need to learn how to creatively use compile errors.
