@@ -468,39 +468,33 @@ error: aborting due to previous error
 
 Can we use this to our advantage in a general and ergonomic way? Of course!
 
-To go about this we'll need to import the following from `std::mem`:
+This is Rust, we shouldn't have to be `unsafe` to get what we want. As it turns
+out, getting the function pointer will emit the same error.
 
-- [`transmute`][transmute] --- What will enable our compile errors
+```rust
+let f = transmute::<u32, u16>;
+```
 
-- [`uninitialized`] --- For instantiating our types
-
-- [`forget`] --- To discard our instances without dropping them
+You may have noticed the odd `::<>` after `transmute`. This is  unofficially
+referred to as [turbofish] syntax. It tells the compiler what generic parameters
+to use for `transmute`, which takes an input and output type.
 
 ### The Macro
 
 With these tools we can write our basic macro:
 
 ```rust
-use std::mem::{forget, transmute, uninitialized};
+use std::mem::transmute;
 
 macro_rules! assert_eq_size {
     ($x:ty, $y:ty) => {
-        unsafe {
-            forget(transmute::<$x, $y>(uninitialized()));
-        }
+        let _ = transmute::<$x, $y>;
     }
 }
 ```
 
 Here `$x` and `$y` are annotated with `:ty`, which means that we can accept
 **any** type. Yes, Rust's macros are this powerful.
-
-You may have noticed the odd `::<>` after `transmute`. This is  unofficially
-referred to as [turbofish] syntax. It tells the compiler what generic parameters
-to use for `transmute`, which takes an input and output type.
-
-Because of type inference, Rust knows that `uninitialized` creates a value of
-type `$x`.
 
 Let's try this out:
 
@@ -510,16 +504,16 @@ assert_eq_size!(u16, u32);
 
 ```
 error[E0512]: transmute called with types of different sizes
-  --> src/main.rs:6:20
+  --> src/main.rs:5:17
    |
-6  |             forget(transmute::<$x, $y>(uninitialized()));
-   |                    ^^^^^^^^^^^^^^^^^^^
+5  |         let _ = transmute::<$x, $y>;
+   |                 ^^^^^^^^^^^^^^^^^^^
 ...
-12 |     assert_eq_size!(u32, u16);
+10 |     assert_eq_size!(u16, u32);
    |     -------------------------- in this macro invocation
    |
-   = note: source type: u32 (32 bits)
-   = note: target type: u16 (16 bits)
+   = note: source type: u16 (16 bits)
+   = note: target type: u32 (32 bits)
 
 error: aborting due to previous error
 ```
@@ -535,9 +529,7 @@ here!
 ```rust
 macro_rules! assert_eq_size {
     ($x:ty, $y:ty) => {
-        unsafe {
-            forget(transmute::<$x, $y>(uninitialized()));
-        }
+        let _ = transmute::<$x, $y>;
     }; // <-- Notice the semicolon!
     ($label:ident; $x:ty, $y:ty) => {
         #[allow(non_snake_case)] // Allows any naming convention
@@ -572,9 +564,7 @@ very much possible.
 ```rust
 macro_rules! assert_eq_size {
     ($x:ty, $($xs:ty),+ $(,)*) => {
-        unsafe {
-            $(forget(transmute::<$x, $xs>(uninitialized()));)+
-        }
+        $(let _ = transmute::<$x, $xs>;)+
     };
     ($label:ident; $($rest:tt)+) => {
         #[allow(dead_code, non_snake_case)]
