@@ -468,7 +468,7 @@ error: aborting due to previous error
 
 Can we use this to our advantage in a general and ergonomic way? Of course!
 
-This is Rust, we shouldn't have to be `unsafe` to get what we want. As it turns
+This is Rust; we shouldn't have to be `unsafe` to get what we want. As it turns
 out, getting the function pointer will emit the same error.
 
 ```rust
