@@ -21,8 +21,8 @@ I live in Miami, FL however I spend most of my year studying computer science at
 Boston University.
 
 I currently have a fascination with [Rust]. It makes writing fast and reliable
-code very easy. I've made [some contributions][rust-commits] to the language.
-I've also authored [some Rust crates](https://crates.io/users/nvzqz).
+code very easy. I've made [some contributions][rust-commits] to the language
+and I've also authored [some Rust crates](https://crates.io/users/nvzqz).
 
 In addition to Rust, a great deal of my work is made with [Swift]. I've written
 a few libraries [available via CocoaPods](https://cocoapods.org/owners/8243).
