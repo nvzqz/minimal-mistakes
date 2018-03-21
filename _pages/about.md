@@ -22,6 +22,10 @@ Boston University.
 
 I currently have a fascination with [Rust]. It makes writing fast and reliable
 code very easy. I've made [some contributions][rust-commits] to the language.
+I've also authored [some Rust crates](https://crates.io/users/nvzqz).
+
+In addition to Rust, a great deal of my work is made with [Swift]. I've written
+a few libraries [available via CocoaPods](https://cocoapods.org/owners/8243).
 
 My introduction to software development was through the open source community.
 As a result, I prioritize making my code open and freely distributable on
@@ -45,6 +49,7 @@ Sketch, Photoshop, Illustrator, After Effects, Cinema 4D
 ### Languages:
 English (native), Spanish (intermediate), German (basic)
 
-[gh]: https://github.com/nvzqz
-[Rust]: https://www.rust-lang.org
+[gh]:           https://github.com/nvzqz
+[Rust]:         https://www.rust-lang.org
 [rust-commits]: https://github.com/rust-lang/rust/commits?author=nvzqz
+[Swift]:        https://swift.org/
