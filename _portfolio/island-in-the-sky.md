@@ -5,12 +5,11 @@ header:
   image: /assets/images/portfolio/island-in-the-sky-header.jpg
   teaser: assets/images/portfolio/island-in-the-sky-teaser.jpg
 last_modified_at: 2017-10-19
+tags: cinema4d
 ---
 
-I was on a time crunch to become familiar with Cinema 4D so I followed a simple
-tutorial to get the basic form of the floating island. I then carved out a
-cascading river, planted a forest, and added a passenger-less hot air balloon.
-Final adjustments were made in Photoshop.
+One of my earlier projects with Cinema 4D, inspired by childlike wonder in video
+games.
 
 [Download](https://drive.google.com/file/d/0B7MQLfqgPj9OdndZem5SUHBtZjQ)
 
