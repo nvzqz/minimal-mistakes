@@ -11,7 +11,7 @@ header:
     teaser: assets/images/posts/rust-static-assertions-1_0-teaser.png
 ---
 
-The [`static_assertions`] crate is now 1.0!
+The [`static_assertions`] Rust library is now 1.0!
 
 This means quite a lot of things. Check out [`CHANGELOG.md`] and the
 [1.0 docs](https://docs.rs/static_assertions/1.0.0)
@@ -34,10 +34,32 @@ This community is the reason that I will be able to attend
 
 ❤️
 
+## What is Static Assertions?
+
+`static_assertions` is a library designed to enable users to perform various
+checks at [compile-time]. It allows for finding errors quickly and early when it
+comes to ensuring certain features or aspects of a codebase. The macros it
+provides are especially important when exposing a public API that requires types
+to be the same size or implement certain traits.
+
 ## No more labels
 
 With Rust 1.37 introducing [`const _`], the [labeling requirement][#1] has been
 completely removed! 🎉
+
+Prior to this, every global macro needed a label to avoid conflicts:
+
+```rust
+const_assert!(val1; true);
+const_assert!(val2; 1 < 2);
+```
+
+Now it's as simple as:
+
+```rust
+const_assert!(true);
+const_assert!(42 < 9000);
+```
 
 Many thanks to [@joshlf] for
 [the RFC](https://github.com/rust-lang/rfcs/blob/master/text/2526-const-wildcard.md)
@@ -169,6 +191,8 @@ assert_not_impl_all!(Foo: Bar, Baz);
 ```
 
 [`static_assertions`]: https://github.com/nvzqz/static-assertions-rs
+
+[compile-time]: https://en.wikipedia.org/wiki/Compile_time
 
 [#1]:  https://github.com/nvzqz/static-assertions-rs/issues/1
 [#17]: https://github.com/nvzqz/static-assertions-rs/pull/17
