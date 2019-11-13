@@ -5,7 +5,7 @@ tags:
     - programming
     - rust
 toc: true
-author_profile: false
+author_profile: true
 header:
     image: /assets/images/posts/rust-static-assertions-1_0-header.png
     teaser: assets/images/posts/rust-static-assertions-1_0-teaser.png
